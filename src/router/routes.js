@@ -6,7 +6,7 @@ const routes = [
 
   {
     path: "/imovel/:id",
-    component: () => import("src/pages/ItemPage.vue"),
+    component: () => import("src/pages/ImovelPage.vue"),
   },
 
   // Always leave this as last one,
