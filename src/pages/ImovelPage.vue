@@ -1,6 +1,10 @@
 <template>
   <div>
-    <ImovelCarrousel :items="imovel.images" />
+    <ImovelCarrousel
+      :items="imovel.images"
+      :imovelDescription="imovel.description"
+      :imovelTitle="imovel.title"
+    />
   </div>
 </template>
 <script>
