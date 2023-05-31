@@ -2,6 +2,22 @@
   <div class="container-superior">
     <div class="carrousel-img">
       <ImovelCarrousel :items="imovel.images" />
+      <div class="chips">
+        <Chip
+          v-if="imovel.quartos > 0"
+          color="black"
+          icon="house"
+          :text="imovel.quartos"
+          :place="imovel.quartos > 1 ? 'Quartos' : 'Quarto'"
+        />
+        <Chip
+          v-if="imovel.banheiros > 0"
+          color="black"
+          icon="shower"
+          :text="imovel.banheiros"
+          :place="imovel.banheiros > 1 ? 'Banheiros' : 'Banheiro'"
+        />
+      </div>
     </div>
     <div class="descricao-imovel">
       <div>
@@ -17,9 +33,10 @@
 <script>
 import ImovelCarrousel from "src/components/ImgCarrousel.vue";
 import ImoveisService from "src/api-mock/mockApi.js";
+import Chip from "src/components/InfoChip.vue";
 
 export default {
-  components: { ImovelCarrousel },
+  components: { ImovelCarrousel, Chip },
 
   computed: {
     imovelId() {
@@ -62,6 +79,9 @@ export default {
   padding: 10px;
   max-width: 80vw;
   justify-content: center;
+}
+.chips {
+  text-align: center;
 }
 
 @media screen and (min-width: 1024px) {

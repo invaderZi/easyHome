@@ -18,6 +18,8 @@ export default {
         city: "jp",
         state: "pb",
         zipCode: "58053170",
+        quartos: 3,
+        banheiros: 2,
         images: [
           {
             id: 1,
