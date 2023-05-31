@@ -25,14 +25,6 @@
         </q-carousel-slide>
       </q-carousel>
     </div>
-    <div class="descricao">
-      <div>
-        <h3>{{ imovelTitle }}</h3>
-      </div>
-      <p>
-        {{ imovelDescription }}
-      </p>
-    </div>
   </div>
 </template>
 
@@ -40,7 +32,7 @@
 import { ref } from "vue";
 
 export default {
-  props: ["items", "imovelDescription", "imovelTitle"],
+  props: ["items"],
   data() {
     return {};
   },
@@ -68,12 +60,6 @@ export default {
   color: black;
   max-width: 90%;
   border-radius: 0px;
-}
-
-.descricao {
-  margin: 20px auto;
-  border-left: 2px solid black;
-  padding-left: 10px;
 }
 
 .q-carousel__slide,
