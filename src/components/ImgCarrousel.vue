@@ -7,10 +7,10 @@
         swipeable
         infinite
         animated
-        height="360px"
         control-type="unlevated"
         control-color="white"
         control-text-color="black"
+        height="400px"
       >
         <q-carousel-slide
           v-for="img in items"
@@ -33,26 +33,26 @@ import { ref } from "vue";
 
 export default {
   props: ["items"],
-  data() {
-    return {};
-  },
   setup() {
+    const slide = ref(1);
+
     return {
-      slide: ref(1),
+      slide,
     };
   },
 };
 </script>
+
 <style scoped>
 .carrousel {
-  max-width: 50vw;
-  min-width: 480px;
   margin: 10px auto;
   display: flex;
   flex-direction: column;
-  max-height: 500px;
   border: 4px solid black;
+  width: 100%;
+  max-width: 100%;
 }
+
 .img-caption {
   text-align: center;
   padding: 2px;
@@ -65,5 +65,22 @@ export default {
 .q-carousel__slide,
 .q-carousel .q-carousel--padding {
   padding: 0 !important;
+}
+
+@media screen and (max-width: 520px), (min-width: 1025px) {
+  .carrousel {
+    width: 100%;
+    max-width: 100%;
+  }
+}
+@media screen and (min-width: 1025px) and (max-width: 1440px) and (orientation: landscape) {
+  .carrousel {
+    width: 70%;
+  }
+}
+@media screen and (max-width: 300px) {
+  .carrousel {
+    min-width: 300px;
+  }
 }
 </style>

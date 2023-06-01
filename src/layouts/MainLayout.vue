@@ -2,12 +2,7 @@
   <q-layout view="hHh lpR fFf">
     <q-header bordered class="bg-white text-black">
       <q-toolbar>
-        <q-toolbar-title>
-          <q-avatar>
-            <img src="https://cdn.quasar.dev/logo-v2/svg/logo-mono-white.svg" />
-          </q-avatar>
-          Title
-        </q-toolbar-title>
+        <q-toolbar-title> easyHome </q-toolbar-title>
 
         <q-btn dense flat round icon="menu" @click="toggleRightDrawer" />
       </q-toolbar>
@@ -17,25 +12,27 @@
       <!-- drawer content -->
     </q-drawer>
 
-    <q-page-container>
-      <router-view />
+    <q-page-container class="page-container">
+      <div class="content-wrapper">
+        <!-- Conteúdo da página -->
+        <slot></slot>
+      </div>
     </q-page-container>
   </q-layout>
 </template>
 
-<script>
-import { ref } from "vue";
+<style scoped>
+.page-container {
+  padding: 0;
+  overflow-x: hidden;
+  display: flex;
+  justify-content: center;
+  margin: 5px auto;
+}
 
-export default {
-  setup() {
-    const rightDrawerOpen = ref(false);
-
-    return {
-      rightDrawerOpen,
-      toggleRightDrawer() {
-        rightDrawerOpen.value = !rightDrawerOpen.value;
-      },
-    };
-  },
-};
-</script>
+.content-wrapper {
+  width: 100%;
+  padding: 24px;
+  box-sizing: border-box;
+}
+</style>

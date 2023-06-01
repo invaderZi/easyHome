@@ -56,6 +56,7 @@ export default {
   methods: {
     async getImovel(id) {
       this.imovel = await ImoveisService.getImovelById(id);
+      console.log(this.imovel);
     },
   },
 };
@@ -79,6 +80,7 @@ export default {
   max-width: 80vw;
   justify-content: center;
 }
+
 .chips {
   text-align: center;
 }
@@ -90,12 +92,13 @@ export default {
   }
 
   .carrousel-img {
-    width: 60%;
+    flex: 1;
     margin-bottom: 20px;
   }
 
   .descricao-imovel {
-    width: 40%;
+    flex: 1;
+    margin-left: 20px;
   }
 }
 </style>
