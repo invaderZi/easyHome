@@ -28,6 +28,29 @@
       </p>
     </div>
   </div>
+  <div class="container-meio">
+    <div class="informacoes-contato">
+      <q-btn
+        color="blue"
+        round
+        :href="emailLink"
+        target="_blank"
+        icon="email"
+        class="q-mr-lg"
+      />
+      <span class="q-mr-md"> tegsue@bol.com.br </span>
+
+      <q-btn
+        color="green"
+        round
+        :href="whatsappLink"
+        target="_blank"
+        icon="fa-brands fa-whatsapp"
+        class="q-mr-md"
+      />
+      <span class="q-mr-md"> +55(88)77665-54424 </span>
+    </div>
+  </div>
 </template>
 
 <script>
@@ -41,6 +64,16 @@ export default {
   computed: {
     imovelId() {
       return this.$route.params.id;
+    },
+
+    whatsappLink() {
+      const phoneNumber = "SEU_NUMERO_DE_TELEFONE";
+      return `https://api.whatsapp.com/send?phone=${phoneNumber}`;
+    },
+
+    emailLink() {
+      const Email = "SEU_NUMERO_DE_TELEFONE";
+      return `https://api.whatsapp.com/send?phone=${Email}`;
     },
   },
   data() {
@@ -84,11 +117,23 @@ export default {
 .chips {
   text-align: center;
 }
+.container-meio {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 
 @media screen and (min-width: 1024px) {
   .container-superior {
     flex-direction: row;
     align-items: flex-start;
+  }
+
+  .container-meio {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
   }
 
   .carrousel-img {

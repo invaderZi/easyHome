@@ -69,5 +69,6 @@ export default {
 
 .title {
   font-weight: 600;
+  padding-left: 24px;
 }
 </style>
