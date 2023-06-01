@@ -56,7 +56,6 @@ export default {
   methods: {
     async getImovel(id) {
       this.imovel = await ImoveisService.getImovelById(id);
-      console.log(this.imovel);
     },
   },
 };
