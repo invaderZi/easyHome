@@ -1,8 +1,8 @@
 {
-  "name": "imoveisonline",
+  "name": "easyHome",
   "version": "0.0.1",
   "description": "Encontre Imoveis e Corretores online",
-  "productName": "Imoveis Online",
+  "productName": "easyHome",
   "author": "zi <zalicrim@gmail.com>",
   "private": true,
   "scripts": {
