@@ -37,6 +37,7 @@
         target="_blank"
         icon="email"
         class="q-mr-lg"
+        push
       />
       <span class="q-mr-md"> tegsue@bol.com.br </span>
 
@@ -47,6 +48,7 @@
         target="_blank"
         icon="fa-brands fa-whatsapp"
         class="q-mr-md"
+        push
       />
       <span class="q-mr-md"> +55(88)77665-54424 </span>
     </div>
