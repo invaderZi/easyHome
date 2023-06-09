@@ -53,16 +53,19 @@
       <span class="q-mr-md"> +55(88)77665-54424 </span>
     </div>
   </div>
+  <div class="map-container">
+    <MapLocation :address="imovel.endereco" />
+  </div>
 </template>
 
 <script>
 import ImovelCarrousel from "src/components/ImgCarrousel.vue";
 import ImoveisService from "src/api-mock/mockApi.js";
 import Chip from "src/components/InfoChip.vue";
+import MapLocation from "../components/MapLocation.vue";
 
 export default {
-  components: { ImovelCarrousel, Chip },
-
+  components: { ImovelCarrousel, Chip, MapLocation },
   computed: {
     imovelId() {
       return this.$route.params.id;
@@ -123,6 +126,9 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+.map-container {
+  margin: 30px auto;
 }
 
 @media screen and (min-width: 1024px) {
