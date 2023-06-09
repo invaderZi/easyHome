@@ -69,10 +69,3 @@ export default {
   },
 };
 </script>
-
-<style>
-.map-container {
-  width: 480px;
-  height: 240px;
-}
-</style>

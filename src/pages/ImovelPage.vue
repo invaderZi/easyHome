@@ -39,7 +39,7 @@
         class="q-mr-lg"
         push
       />
-      <span class="q-mr-md"> tegsue@bol.com.br </span>
+      <span class="q-mr-md"> {{ imovel.anunciante.email }} </span>
 
       <q-btn
         color="green"
@@ -77,13 +77,42 @@ export default {
     },
 
     emailLink() {
-      const Email = "SEU_NUMERO_DE_TELEFONE";
-      return `https://api.whatsapp.com/send?phone=${Email}`;
+      let email = this.imovel.anunciante.email;
+      let subject = "Contato Imovel" + this.imovel.title;
+      let body =
+        "Olá gostaria de falar sobre o imovel: " +
+        this.imovel.title +
+        ", " +
+        "anunciado no EasyHome.";
+
+      let encodedEmail = encodeURIComponent(email);
+      let encodedSubject = encodeURIComponent(subject);
+      let encodedBody = encodeURIComponent(body);
+
+      return `mailto:${encodedEmail}?subject=${encodedSubject}&body=${encodedBody}`;
     },
   },
   data() {
     return {
-      imovel: {},
+      imovel: {
+        id: "",
+        title: "",
+        endereco: "",
+        description: "",
+        value: "",
+        type: "",
+        city: "",
+        state: "",
+        zipCode: "",
+        quartos: "",
+        banheiros: "",
+        images: [],
+        anunciante: {
+          email: "",
+          nome: "",
+          tel: "",
+        },
+      },
     };
   },
 
@@ -129,6 +158,8 @@ export default {
 }
 .map-container {
   margin: 30px auto;
+  width: 320px;
+  height: 200px;
 }
 
 @media screen and (min-width: 1024px) {
@@ -152,6 +183,12 @@ export default {
   .descricao-imovel {
     flex: 1;
     margin-left: 20px;
+  }
+
+  .map-container {
+    margin: 30px auto;
+    width: 480px;
+    height: 240px;
   }
 }
 </style>

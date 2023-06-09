@@ -42,6 +42,11 @@ export default {
             description: "dentro da casa",
           },
         ],
+        anunciante: {
+          email: "email.exmplo@exemplo.com",
+          nome: "joao da silva",
+          tel: "+5584555566669",
+        },
       },
     ];
   },
