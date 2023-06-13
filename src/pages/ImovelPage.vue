@@ -18,43 +18,74 @@
           :place="imovel.banheiros > 1 ? 'Banheiros' : 'Banheiro'"
         />
       </div>
+
+      <div class="chips">
+        <h6>
+          Valor total: <span>{{ valortotalImovel }}</span>
+        </h6>
+        <p v-if="imovel.type == 'aluguel'">
+          Aluguel: R$ <span>{{ imovel.value }}</span>
+        </p>
+        <p v-if="imovel.type == 'venda'">
+          Valor Imovel: <span>{{ imovel.value }}</span>
+        </p>
+        <p v-if="!imovel.condominioIncluso">
+          Condominio: R$ <span>{{ imovel.valorCondominio }}</span>
+        </p>
+        <p v-if="imovel.condominioIncluso">Condominio Incluso</p>
+      </div>
     </div>
     <div class="descricao-imovel">
       <div>
         <h3>{{ imovel.title }}</h3>
       </div>
-      <p>
-        {{ imovel.description }}
-      </p>
-    </div>
-  </div>
-  <div class="container-meio">
-    <div class="informacoes-contato">
-      <q-btn
-        color="blue"
-        round
-        :href="emailLink"
-        target="_blank"
-        icon="email"
-        class="q-mr-lg"
-        push
-      />
-      <span class="q-mr-md"> {{ imovel.anunciante.email }} </span>
+      <div>
+        <p>
+          {{ imovel.description }}
+        </p>
+      </div>
 
-      <q-btn
-        color="green"
-        round
-        :href="whatsappLink"
-        target="_blank"
-        icon="fa-brands fa-whatsapp"
-        class="q-mr-md"
-        push
-      />
-      <span class="q-mr-md"> +55(88)77665-54424 </span>
+      <div class="contato-anunciante">
+        <p><b>Contato do anunciante:</b></p>
+        <p class="">{{ imovel.anunciante.email }}</p>
+        <p class="">{{ imovel.anunciante.tel }}</p>
+      </div>
+      <div class="informacoes-contato">
+        <q-btn
+          color="blue"
+          round
+          :href="emailLink"
+          target="_blank"
+          icon="email"
+          class="q-mr-lg"
+          push
+        >
+          <q-tooltip class="bg-white text-body2 text-black">
+            Enviar e-mail
+          </q-tooltip></q-btn
+        >
+
+        <q-btn
+          color="green"
+          round
+          :href="whatsappLink"
+          target="_blank"
+          icon="fa-brands fa-whatsapp"
+          class="q-mr-md"
+          push
+        >
+          <q-tooltip class="bg-white text-body2 text-black">
+            Enviar Whatsapp
+          </q-tooltip></q-btn
+        >
+      </div>
     </div>
   </div>
-  <div class="map-container">
-    <MapLocation :address="imovel.endereco" />
+
+  <div class="map-border">
+    <div class="map-container">
+      <MapLocation :address="imovel.endereco" />
+    </div>
   </div>
 </template>
 
@@ -91,6 +122,19 @@ export default {
 
       return `mailto:${encodedEmail}?subject=${encodedSubject}&body=${encodedBody}`;
     },
+    valortotalImovel() {
+      if (this.imovel.condominioIncluso || this.imovel.type == "venda") {
+        return this.imovel.value;
+      }
+
+      const valor = parseFloat(this.imovel.value.replace(",", "."));
+      const condominio = parseFloat(
+        this.imovel.valorCondominio.replace(",", ".")
+      );
+      const resultado = (valor + condominio).toFixed(2).replace(".", ",");
+
+      return resultado;
+    },
   },
   data() {
     return {
@@ -100,6 +144,8 @@ export default {
         endereco: "",
         description: "",
         value: "",
+        condominioIncluso: false,
+        valorCondominio: "",
         type: "",
         city: "",
         state: "",
@@ -151,28 +197,24 @@ export default {
 .chips {
   text-align: center;
 }
-.container-meio {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
+
 .map-container {
   margin: 30px auto;
   width: 320px;
   height: 200px;
 }
 
+.prices {
+  margin: 30px;
+}
+.contato-anunciante {
+  margin: 40px auto 20px;
+  font-size: 12px;
+}
 @media screen and (min-width: 1024px) {
   .container-superior {
     flex-direction: row;
     align-items: flex-start;
-  }
-
-  .container-meio {
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-end;
-    align-items: center;
   }
 
   .carrousel-img {
@@ -189,6 +231,11 @@ export default {
     margin: 30px auto;
     width: 480px;
     height: 240px;
+  }
+
+  .prices {
+    margin: 30px auto;
+    padding-left: 200px;
   }
 }
 </style>

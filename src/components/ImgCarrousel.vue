@@ -19,9 +19,6 @@
           class="bg-white"
         >
           <q-img :src="img.source" fit="cover" :ratio="16 / 9" height="100%" />
-          <!-- <div class="img-caption">
-            {{ img.description.toUpperCase() }}
-          </div> -->
         </q-carousel-slide>
       </q-carousel>
     </div>
