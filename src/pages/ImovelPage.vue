@@ -207,10 +207,12 @@ export default {
 .prices {
   margin: 30px;
 }
+
 .contato-anunciante {
   margin: 40px auto 20px;
   font-size: 12px;
 }
+
 @media screen and (min-width: 1024px) {
   .container-superior {
     flex-direction: row;
